@@ -1,49 +1,50 @@
 ***Architecture Summary — e-Performance***
-
 **1. Design Philosophy**
 
-e-Performance is a horizontal performance & claims orchestration layer designed to support multiple regulatory and market regimes.
+e-Performance is a horizontal performance & claims orchestration layer designed to support multiple regulatory and market regimes without coupling the core performance model to any specific regulation.
 
-The system is governed by formal Architecture Decision Records (ADRs).
+The system is governed by formal Architecture Decision Records (ADRs), which define non-negotiable architectural constraints and compliance boundaries.
 
-Core foundational decisions:
+Foundational Decisions
 
-Energy as primary substrate (ADR-001)
+ADR-001 — Energy as the Primary Claim Substrate
 
-Two-stream MRV model (ADR-002)
+ADR-002 — Two-Stream MRV Model
 
-Deterministic reconciliation (ADR-003)
+ADR-003 — Reconciliation, Tolerances & Failure States
 
-Claim isolation and double-counting prevention (ADR-004)
+ADR-004 — Claim Isolation & Double-Counting Prevention
 
+**2. Core Architectural Principles**
+***2.1 Energy as the Primary Substrate***
 
-**2. Core Architecture Decisions**
+Energy (kWh, with deterministic conversion to MJ) is the irreducible unit of truth within e-Performance.
 
-*2.1 Energy as the Primary Substrate*
+Emissions are derived attributes.
 
-Energy (kWh → MJ) is the irreducible unit of truth.
+Certificates are regime-level artefacts.
 
-Emissions and certificates are derived artefacts.
+All claims must trace back to verified energy quantities.
 
-See: ADR-001
+See ADR-001.
 
+***2.2 Two-Stream MRV Model***
 
-*2.2 Two-Stream MRV Model*
+All claims require the presence of two independent but linked streams:
 
-All claims require:
+Meter Stream — regulatory-grade energy measurements
 
-Meter Stream (regulatory-grade energy)
+Operational Stream — asset-level performance evidence
 
-Operational Stream (asset-level evidence)
+Neither stream is sufficient in isolation.
 
 Claims cannot bypass reconciliation.
 
-See: ADR-002
+See ADR-002.
 
+***2.3 Deterministic Reconciliation***
 
-*2.3 Deterministic Reconciliation*
-
-Reconciliation outcomes are explicitly classified:
+Before any claim is generated, reconciliation must classify the reporting period into one of:
 
 PASS
 
@@ -51,44 +52,45 @@ CONDITIONAL_PASS
 
 FAIL
 
-Claims are blocked in FAIL state.
+Claims are blocked in a FAIL state.
+Conditional passes require explicit annotation.
 
-See: ADR-003
+See ADR-003.
 
+***2.4 Claim Isolation***
 
-*2.4 Claim Isolation*
+Energy allocated to one claim context cannot be reused in another regime.
 
-Energy allocated to one regime cannot be reused in another.
+Allocation results in deterministic locking at the reporting-period level, preventing double counting by architecture rather than policy.
 
-This prevents double counting by architecture.
-
-See: ADR-004
-
+See ADR-004.
 
 **3. Multi-Regime Capability**
 
-The same performance layer supports:
+The canonical performance layer is regime-agnostic and supports multiple modules:
 
-REDIII / RTFO compliance
+REDIII / RTFO compliance (energy-based)
 
 Guarantees of Origin validation
 
 Voluntary carbon methodologies
 
-Each regime is implemented as a module on top of the same reconciled energy base.
+Each regime is implemented as a module on top of the same reconciled energy base and must respect reconciliation and claim isolation rules.
 
+***4. Hackathon Scope — Hedera Apex 2026***
 
-**4. Hackathon Scope**
+For the Hedera Apex Hackathon 2026, the active implementation focus is:
 
-For the Hedera Apex Hackathon 2026:
+REDIII / RTFO (Ireland — NORA), energy-based reporting.
 
-Active module:
-→ REDIII / RTFO (Ireland – NORA)
+The MVP demonstrates:
 
-Not implemented in MVP:
+Energy-first architecture
 
-GO module
+Two-stream reconciliation
 
-Carbon module
+Deterministic eligibility gating
 
-However, the architecture supports them without modification to the performance layer.
+Claim allocation readiness
+
+*Guarantees of Origin and Carbon modules are architecturally supported but are not implemented in this MVP.*
