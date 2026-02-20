@@ -6,6 +6,25 @@ By preventing double counting and enabling transparent certification, **e-Spark 
 
 The MVP demonstrates real-world energy data flowing into Hedera as verifiable, on-chain sustainability assets.
 
+Project Scope — Hackathon Focus
+
+e-Performance supports multiple regime modules:
+
+Voluntary Carbon Credit preparation (energy-based substrate)
+
+REDIII / RTFO compliance reporting
+
+Guarantees of Origin validation
+
+⚠️ Hackathon Focus
+
+For the Hedera Apex Hackathon 2026, the active implementation scope is:
+
+REDIII energy-based reporting (Ireland – RTFO/NORA)
+
+Carbon and GO modules are architecturally supported but not implemented in this MVP.
+
+
 e-Spark - *"Igniting the future of electrification"*
 
 e-sparl.xyz
