@@ -24,6 +24,17 @@ REDIII energy-based reporting (Ireland – RTFO/NORA)
 
 Carbon and GO modules are architecturally supported but not implemented in this MVP.
 
+**Sections**
+Project description (100 words)
+Hackathon track
+Architecture overview
+Business model
+Why Ireland first
+Tech stack
+Subimission presentation-> /submission/e-Spark_Apex_Hackathon_Deck.pdf
+Demo video -> https://vimeo.com/1171621707/56acc04c6b
+Pitch deck -> will be loaded to the documents section
+Repository structure
 
 e-Spark - *"Igniting the future of electrification"*
 
