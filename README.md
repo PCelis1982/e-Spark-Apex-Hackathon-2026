@@ -27,4 +27,4 @@ Carbon and GO modules are architecturally supported but not implemented in this 
 
 e-Spark - *"Igniting the future of electrification"*
 
-e-sparl.xyz
+e-spark.xyz
