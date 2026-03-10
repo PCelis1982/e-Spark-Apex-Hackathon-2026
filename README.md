@@ -100,3 +100,10 @@ https://vimeo.com/1172153034/cceda5374b?fl=tl&fe=ec
 ---
 
 # Repository Structure
+
+readme.md
+License.md
+submission/: e-Spark_Apex_Hackathon_Deck
+docs/ Architecture Design files
+code/ Front-end & Back-end applications code
+   
